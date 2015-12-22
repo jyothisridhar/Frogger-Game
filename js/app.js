@@ -67,7 +67,8 @@ Player.prototype.update = function() {
     this.increaseScore();
     this.enemyCollision();
 
-    if(player.score > 20 && player.y === 0) {
+    //If all stars are collected and player reaches water, game is won
+    if(allStars.length === 0 && player.y === 0) {
         $('#game-won').show();
         $('.won').click(function() {
             $('#game-won').hide();
