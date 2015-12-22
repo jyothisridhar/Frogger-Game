@@ -1,7 +1,7 @@
-var rightEdge = 505;
-var bottomEdge = 404;
-var tileWidth = 101;
-var tileHeight = 83;
+var RIGHT_EDGE = 505;
+var BOTTOM_EDGE = 404;
+var TILE_WIDTH = 101;
+var TILE_HEIGHT = 83;
 
 var hasReachedWater = false;
 
@@ -23,7 +23,7 @@ Enemy.prototype.update = function(dt) {
     // You should multiply any movement by the dt parameter
     // which will ensure the game runs at the same speed for
     // all computers.
-    if(this.x < rightEdge) {
+    if(this.x < RIGHT_EDGE) {
         this.x += dt * this.speed;
     }
     else {
@@ -136,39 +136,39 @@ var checkCollisions = function(targetArray) {
 Player.prototype.handleInput = function(key){
     switch(key) {
         case 'left':
-        if(this.x - tileWidth < 0){
+        if(this.x - TILE_WIDTH < 0){
             this.x = 0;
         }
         else {
-            this.x -= tileWidth;
+            this.x -= TILE_WIDTH;
         }
         break;
 
         case 'right':
-        if(this.x + tileWidth >= rightEdge){
+        if(this.x + TILE_WIDTH >= RIGHT_EDGE){
             this.x = 404;
         }
         else {
-            this.x += tileWidth;
+            this.x += TILE_WIDTH;
         }
         break;
 
         case 'up':
-        if(this.y - tileHeight < 0){
+        if(this.y - TILE_HEIGHT < 0){
             this.y = 0;
             hasReachedWater = true;
         }
         else {
-            this.y -= tileHeight;
+            this.y -= TILE_HEIGHT;
         }
         break;
 
         case 'down':
-        if(this.y + tileHeight >= bottomEdge){
+        if(this.y + TILE_HEIGHT >= BOTTOM_EDGE){
             this.y = 404;
         }
         else {
-            this.y += tileHeight;
+            this.y += TILE_HEIGHT;
         }
         break;
     }
