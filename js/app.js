@@ -51,7 +51,7 @@ var Player = function() {
 };
 
 //Re position the player once he reaches the water.
-var resetPlayer = function() {
+Player.prototype.resetPlayer = function() {
     player.x = 202;
     player.y = 404;
 };
@@ -68,7 +68,7 @@ Player.prototype.update = function() {
     this.enemyCollision();
 
     //If all stars are collected and player reaches water, game is won
-    if(allStars.length === 0 && player.y === 0) {
+    if(allStars.length === 0 && this.y === 0) {
         $('#game-won').show();
         $('.won').click(function() {
             $('#game-won').hide();
@@ -92,7 +92,7 @@ Player.prototype.drawText = function() {
 Player.prototype.increaseScore = function() {
     if(hasReachedWater) {
         this.score++;
-        setTimeout(resetPlayer, 500);
+        setTimeout(this.resetPlayer, 500);
         hasReachedWater = false;
     }
 };
@@ -105,7 +105,7 @@ Player.prototype.enemyCollision = function() {
     if(bug) {
         if(this.lives !== 0) {
             this.lives--;
-            resetPlayer();
+            this.resetPlayer();
         }
         else {
             $('#game-over').show();
