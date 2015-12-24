@@ -52,8 +52,8 @@ var Player = function() {
 
 //Re position the player once he reaches the water.
 Player.prototype.resetPlayer = function() {
-    player.x = 202;
-    player.y = 404;
+    this.x = 202;
+    this.y = 404;
 };
 
 //Draw the player on the canvas.
@@ -90,9 +90,10 @@ Player.prototype.drawText = function() {
 
 //Calculate score of the player
 Player.prototype.increaseScore = function() {
+    var _this = this;
     if(hasReachedWater) {
         this.score++;
-        setTimeout(this.resetPlayer, 500);
+        setTimeout(function(){_this.resetPlayer();}, 500);
         hasReachedWater = false;
     }
 };
